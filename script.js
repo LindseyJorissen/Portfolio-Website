@@ -1,12 +1,16 @@
-const header = document.getElementById("header");
-const aboutSection = document.getElementById("about");
+const toggleBtn = document.getElementById("theme-toggle");
+const body = document.body;
 
-window.addEventListener("scroll", function() {
-  const aboutSectionPosition = aboutSection.getBoundingClientRect().top;
+if (localStorage.getItem("theme") === "light") {
+  body.classList.add("light-mode");
+}
 
-  if (aboutSectionPosition <= window.innerHeight * 0.1) {
-    header.classList.add("hidden");
+toggleBtn.addEventListener("click", () => {
+  body.classList.toggle("light-mode");
+
+  if (body.classList.contains("light-mode")) {
+    localStorage.setItem("theme", "light");
   } else {
-    header.classList.remove("hidden"); 
+    localStorage.setItem("theme", "dark");
   }
 });
