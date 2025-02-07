@@ -1,16 +1,17 @@
-const toggleBtn = document.getElementById("theme-toggle");
+const toggleSwitch = document.getElementById("theme-toggle");
 const body = document.body;
 
 if (localStorage.getItem("theme") === "light") {
   body.classList.add("light-mode");
+  toggleSwitch.checked = true;
 }
 
-toggleBtn.addEventListener("click", () => {
-  body.classList.toggle("light-mode");
-
-  if (body.classList.contains("light-mode")) {
+toggleSwitch.addEventListener("change", () => {
+  if (toggleSwitch.checked) {
+    body.classList.add("light-mode");
     localStorage.setItem("theme", "light");
   } else {
+    body.classList.remove("light-mode");
     localStorage.setItem("theme", "dark");
   }
 });
