@@ -15,3 +15,14 @@ toggleSwitch.addEventListener("change", () => {
     localStorage.setItem("theme", "dark");
   }
 });
+
+window.addEventListener("scroll", function () {
+  let bigNameSection = document.querySelector(".home-content h1");
+  let logo = document.querySelector(".logo");
+
+  if (bigNameSection.getBoundingClientRect().bottom < 0) {
+      logo.classList.add("visible");
+  } else {
+      logo.classList.remove("visible");
+  }
+});
